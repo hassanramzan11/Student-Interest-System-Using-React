@@ -6,7 +6,9 @@ import DegreeDistributionChart from "./DegreeDistributionChart";
 import GenderDistributionChart from "./GenderDistributionChart";
 import Chart from "chart.js/auto";
 import AgeDistributionChart from "./AgeDistributionChart";
+import DistinctInterestsList from "./DistinctInterestsList";
 import { Link } from "react-router-dom";
+import "./Dashboard.css"; // Import the CSS file for Dashboard styling
 
 const Dashboard = ({ tableData }) => {
   const interests = tableData.map((student) => student.interest);
@@ -53,6 +55,8 @@ const Dashboard = ({ tableData }) => {
 
   const pieChartTopRef = useRef({ chart: null });
 
+  const distinctInterests = Object.keys(interestCounts);
+
   const createTopInterestsChart = () => {
     // Code for creating the top interests chart
   };
@@ -80,53 +84,57 @@ const Dashboard = ({ tableData }) => {
   }));
 
   return (
-    <div>
+    <div className="dashboard-container">
       <div className="title">Student Interest System</div>
       <div className="navbtns" id="btns">
-      <Link to="/">
+        <Link to="/StudentRegistrationForm">
           <button className="styled-button">Student Register</button>
         </Link>
         <Link to="/StudentList">
-            <button className="styled-button">Student List</button>
-          </Link>
-        
+          <button className="styled-button">Student List</button>
+        </Link>
       </div>
       <br />
 
       <h1>Dashboard</h1>
+      <br></br>
 
-      {/* Top Interests Chart */}
-      <TopInterestsChart
-        top5Interests={top5Interests}
-        bottom5Interests={bottom5Interests}
-      />
+      <div className="charts-grid">
+        {/* Top Interests Chart */}
+        <TopInterestsChart
+          top5Interests={top5Interests}
+          bottom5Interests={bottom5Interests}
+        />
 
-      {/* City Distribution Chart */}
-      <CityDistributionChart
-        cities={cities}
-        cityDistributionData={cityDistributionData}
-      />
+        <DistinctInterestsList distinctInterests={distinctInterests} />
 
-      {/* Department Distribution Chart */}
-      <DepartmentDistributionChart
-        departments={departments}
-        departmentDistributionData={departmentDistributionData}
-      />
+        {/* City Distribution Chart */}
+        <CityDistributionChart
+          cities={cities}
+          cityDistributionData={cityDistributionData}
+        />
 
-      {/* Degree Distribution Chart */}
-      <DegreeDistributionChart
-        degrees={degrees}
-        degreeDistributionData={degreeDistributionData}
-      />
+        {/* Department Distribution Chart */}
+        <DepartmentDistributionChart
+          departments={departments}
+          departmentDistributionData={departmentDistributionData}
+        />
 
-      {/* Gender Distribution Chart */}
-      <GenderDistributionChart
-        genders={genders}
-        genderDistributionData={genderDistributionData}
-      />
+        {/* Degree Distribution Chart */}
+        <DegreeDistributionChart
+          degrees={degrees}
+          degreeDistributionData={degreeDistributionData}
+        />
 
-      {/* Age Distribution Chart */}
-      <AgeDistributionChart ageData={ageChartData} />
+        {/* Gender Distribution Chart */}
+        <GenderDistributionChart
+          genders={genders}
+          genderDistributionData={genderDistributionData}
+        />
+
+        {/* Age Distribution Chart */}
+        <AgeDistributionChart ageData={ageChartData} />
+      </div>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import StudentList from '../src/components/StudentList';
 import Dashboard from '../src/components/Dashboard';
 import StudentRegistrationForm from '../src/components/StudentRegistrationForm';
+
 import './App.css';
 import './st.css';
 
@@ -107,20 +108,6 @@ function App() {
       "endDate": "2023-12-01"
     },
     {
-      "name": "Eva Rodriguez",
-      "rollNo": "7",
-      "email": "eva.rodriguez@example.com",
-      "city": "Rawalpindi",
-      "dob": "1990-07-18",
-      "gender": "Female",
-      "interest": "Art",
-      "department": "Fine Arts",
-      "degreeTitle": "bachelor",
-      "subject": "Painting",
-      "startDate": "2022-03-05",
-      "endDate": "2024-02-28"
-    },
-    {
       "name": "Michael Williams",
       "rollNo": "53",
       "email": "michael.williams@example.com",
@@ -203,6 +190,20 @@ function App() {
       "subject": "Cinematography",
       "startDate": "2019-01-15",
       "endDate": "2021-12-10"
+    },
+    {
+      "name": "Danish",
+      "rollNo": "22",
+      "email": "danish@example.com",
+      "city": "Gujranwala",
+      "dob": "1991-08-28",
+      "gender": "male",
+      "interest": "Cycling",
+      "department": "Film Studies",
+      "degreeTitle": "master",
+      "subject": "Cinematography",
+      "startDate": "2019-01-15",
+      "endDate": "2021-12-10"
     }
   ]
   
@@ -213,11 +214,11 @@ function App() {
       <Routes>
         {/* Pass setTableData as a prop to StudentRegistrationForm */}
         <Route
-          path="/"
+          path="/StudentRegistrationForm"
           element={<StudentRegistrationForm setTableData={setTableData} tableData={tableData} />}
         />
         <Route
-          path="/Dashboard"
+          path="/"
           element={<Dashboard tableData={tableData} />}
         />
         <Route path="/StudentList" element={<StudentList tableData={tableData} setTableData={setTableData}/>} />

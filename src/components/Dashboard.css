@@ -1,0 +1,15 @@
+/* Dashboard.css */
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Adjust minmax value for wider columns */
+    gap: 20px;
+  }
+  
+  /* Add any additional styling as needed */
+  
